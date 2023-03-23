@@ -25,7 +25,6 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
@@ -124,7 +123,7 @@ private fun ABSTransactionItem(transaction: ABSTransactionViewData, absAmountCol
                 Spacer(modifier = Modifier.width(8.dp))
                 Column(Modifier.weight(1f)) {
                     Text(
-                        text = schemeName ?: stringResource(R.string.ledger_payment),
+                        text = schemeName ?: stringResource(R.string.ledger_payment, ""),
                         style = textParagraphT1Highlight(Neutral80)
                     )
                     orderingDate?.let {

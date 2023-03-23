@@ -43,10 +43,7 @@ import lib.dehaat.ledger.presentation.ledger.transactions.ui.component.AbsBanner
 import lib.dehaat.ledger.presentation.ledger.transactions.ui.component.TransactionInvoiceItem
 import lib.dehaat.ledger.presentation.ledger.ui.component.FilterStrip
 import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionCard
-import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType.DebitEntry
-import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType.DebitNote
-import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType.FinancingFee
-import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType.Interest
+import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType.*
 import lib.dehaat.ledger.presentation.model.revamp.transactions.TransactionViewDataV2
 import lib.dehaat.ledger.presentation.model.transactions.TransactionViewData
 import lib.dehaat.ledger.presentation.model.transactions.toStartAndEndDates
@@ -204,6 +201,7 @@ private fun TransactionViewData.toTransactionViewDataV2() = with(this) {
 		unrealizedPayment = unrealizedPayment,
 		fromDate = fromDate,
 		toDate = toDate,
-		adjustmentAmount = adjustmentAmount
+		adjustmentAmount = adjustmentAmount,
+		schemeName = schemeName
 	)
 }

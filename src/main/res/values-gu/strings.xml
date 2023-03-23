@@ -18,7 +18,7 @@
     <string name="under_process">Under Process</string>
     <string name="your_order_limit_is_exhausted_please_pay_minimum">Your order limit is exhausted. Please pay minimum Rs %s immediately</string>
     <string name="advance_balance_booking">એડવાન્સ બેલેન્સ: બુકીંગ સ્કીમ</string>
-    <string name="adjust_remaining_balance">%s સ્કીમનું બેલેન્સ બાકી લેણાં સામે એડજસ્ટ થઇ ગયેલ છે.</string>
+    <string name="adjust_remaining_balance">%s બાકી લેણાં સામે એડજસ્ટ થઇ ગયેલ છે.</string>
     <string name="see_details">વર્ણન જુઓ</string>
     <string name="advanced_payment_blocked_till_s">%s સુધી એડવાન્સ રકમ બ્લોક કરવામાં આવેલ છે.</string>
     <string name="advanced_balance_details">એડવાન્સ બેલેન્સ વર્ણન</string>

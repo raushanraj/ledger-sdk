@@ -9,10 +9,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -23,13 +23,17 @@ import lib.dehaat.ledger.initializer.themes.LedgerColors
 import lib.dehaat.ledger.initializer.toDateMonthYear
 import lib.dehaat.ledger.presentation.common.uicomponent.CommonContainer
 import lib.dehaat.ledger.presentation.common.uicomponent.SpaceMedium
+import lib.dehaat.ledger.presentation.common.uicomponent.VerticalSpacer
 import lib.dehaat.ledger.presentation.ledger.components.CreditNoteKeyValue
 import lib.dehaat.ledger.presentation.ledger.components.CreditNoteKeyValueInSummaryViewWithTopPadding
 import lib.dehaat.ledger.presentation.ledger.components.NoDataFound
 import lib.dehaat.ledger.presentation.ledger.components.ShowProgressDialog
 import lib.dehaat.ledger.presentation.ledger.details.payments.PaymentDetailViewModel
 import lib.dehaat.ledger.presentation.ledger.revamp.state.UIState
+import lib.dehaat.ledger.resources.BlueGreen10
+import lib.dehaat.ledger.resources.FrenchBlue120
 import lib.dehaat.ledger.resources.text18Sp
+import lib.dehaat.ledger.resources.textParagraphT2Highlight
 import lib.dehaat.ledger.util.HandleAPIErrors
 import lib.dehaat.ledger.util.getAmountInRupees
 
@@ -67,9 +71,19 @@ fun PaymentDetailScreen(
                             enabled = true,
                         )
                         .background(Color.White)
-                        .padding(18.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                        .padding(18.dp)
                 ) {
+
+                    paymentSummary?.schemeName?.let {
+                        Text(
+                            modifier = Modifier
+                                .background(color = BlueGreen10, RoundedCornerShape(8.dp))
+                                .padding(horizontal = 12.dp, vertical = 4.dp),
+                            text = it,
+                            style = textParagraphT2Highlight(FrenchBlue120)
+                        )
+                        VerticalSpacer(height = 16.dp)
+                    }
 
                     paymentSummary?.totalAmount?.let {
                         Card(

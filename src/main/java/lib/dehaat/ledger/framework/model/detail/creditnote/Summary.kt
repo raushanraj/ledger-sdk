@@ -14,5 +14,7 @@ data class Summary(
     @Json(name = "timestamp")
     val timestamp: Long,
     @Json(name = "reason")
-    val reason: String
+    val reason: String,
+    @Json(name = "scheme_name")
+    val schemeName: String?
 )

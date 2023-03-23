@@ -38,5 +38,7 @@ data class Transaction(
     @Json(name = "to_date")
     val toDate: Long?,
     @Json(name = "adjustment_amount")
-    val adjustmentAmount: Double?
+    val adjustmentAmount: Double?,
+    @Json(name = "scheme_name")
+    val schemeName: String?
 )

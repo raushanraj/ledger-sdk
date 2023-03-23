@@ -2,7 +2,12 @@ package lib.dehaat.ledger.presentation.ledger.details.payments.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -25,7 +30,16 @@ import lib.dehaat.ledger.presentation.ledger.components.ShowProgressDialog
 import lib.dehaat.ledger.presentation.ledger.details.payments.PaymentDetailViewModel
 import lib.dehaat.ledger.presentation.ledger.revamp.state.UIState
 import lib.dehaat.ledger.presentation.model.detail.payment.PaymentDetailSummaryViewData
-import lib.dehaat.ledger.resources.*
+import lib.dehaat.ledger.resources.Background
+import lib.dehaat.ledger.resources.BlueGreen10
+import lib.dehaat.ledger.resources.FrenchBlue120
+import lib.dehaat.ledger.resources.LedgerTheme
+import lib.dehaat.ledger.resources.Neutral100
+import lib.dehaat.ledger.resources.Neutral80
+import lib.dehaat.ledger.resources.Neutral90
+import lib.dehaat.ledger.resources.textHeadingH3
+import lib.dehaat.ledger.resources.textParagraphT1Highlight
+import lib.dehaat.ledger.resources.textParagraphT2Highlight
 import lib.dehaat.ledger.util.getAmountInRupees
 
 @Preview(
@@ -86,6 +100,17 @@ private fun PaymentDetails(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column {
+            paymentSummary?.schemeName?.let {
+                Text(
+                    modifier = Modifier
+                        .background(color = BlueGreen10, RoundedCornerShape(8.dp))
+                        .padding(horizontal = 12.dp, vertical = 4.dp),
+                    text = it,
+                    style = textParagraphT2Highlight(FrenchBlue120)
+                )
+                VerticalSpacer(height = 20.dp)
+            }
+
             Text(
                 text = stringResource(id = R.string.payment_amount),
                 style = textParagraphT1Highlight(Neutral90)

@@ -40,7 +40,7 @@ data class ABSData(
     @Json(name = "last_move_scheme")
     val lastMoveScheme: String?,
     @Json(name = "show_banner")
-    val showBanner: Boolean?
+    val showBanner: Boolean?,
+    @Json(name = "last_moved_scheme_amount")
+    val lastMovedSchemeAmount: String?
 )
-
-

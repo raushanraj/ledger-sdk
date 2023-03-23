@@ -17,5 +17,6 @@ data class TransactionEntity(
     val sourceNo: String?,
     val fromDate: Long?,
     val toDate: Long?,
-    val adjustmentAmount: Double?
+    val adjustmentAmount: Double?,
+    val schemeName: String?,
 )

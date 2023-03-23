@@ -18,5 +18,6 @@ data class TransactionEntityV2(
 	val isInterestSubVented: Boolean?,
 	val fromDate: Long?,
 	val toDate: Long?,
-	val adjustmentAmount: Double?
+	val adjustmentAmount: Double?,
+	val schemeName: String?,
 )

@@ -104,7 +104,7 @@
     <string name="your_advance_amount">%s is your advance amount</string>
     <string name="credit_note_ledger">Credit Note: %s</string>
     <string name="ledger_credit_note">Credit Note</string>
-    <string name="ledger_payment">Payment Received. Thank You</string>
+    <string name="ledger_payment">Payment Received%s. Thank You</string>
     <string name="till_today">%s till today</string>
     <string name="interest_running">Interest already charged from %s days</string>
     <string name="interest_starting">Interest going to be started in %s days</string>
@@ -140,7 +140,7 @@
     <string name="unpaid_outstanding">As you have an unpaid outstanding of  ₹ %s</string>
     <string name="more_than_90_days">for more than 90 days.</string>
     <string name="advance_balance_booking">Advance Payment : Advance Booking Scheme</string>
-    <string name="adjust_remaining_balance">%s’s balance has been adjusted with outstanding</string>
+    <string name="adjust_remaining_balance">%s has been adjusted with outstanding</string>
     <string name="see_details">See details</string>
     <string name="advanced_payment_blocked_till_s">Advanced payment is blocked till %s</string>
     <string name="advanced_balance_details">Advanced balance details</string>
@@ -186,4 +186,5 @@
     <string name="ledger_credit_line_status_repayment_frequency">Your credit line is on-hold as Rs. %s is pending since %s days. Please pay immediately.</string>
     <string name="ledger_credit_line_status_onboarding_pod">Your credit line is on-hold as you haven’t submitted your onboarding documents. Please contact you sales executive for further details.</string>
     <string name="your_ordering_is_blocked">Your ordering is blocked</string>
+    <string name="colon_value">: %s</string>
 </resources>

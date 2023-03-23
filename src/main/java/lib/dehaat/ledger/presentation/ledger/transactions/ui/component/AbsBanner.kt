@@ -51,9 +51,9 @@ fun AbsBanner(
 	Text(
 		text = stringResource(R.string.advance_balance_booking), style = textMediumNoto14Sp(Neutral90)
 	)
-	if (!abs?.lastMoveScheme.isNullOrEmpty()) {
+	if (!abs?.lastMovedSchemeAmount.isNullOrEmpty()) {
 		Text(
-			text = stringResource(R.string.adjust_remaining_balance, abs?.lastMoveScheme.orEmpty()),
+			text = stringResource(R.string.adjust_remaining_balance, abs?.lastMovedSchemeAmount.orEmpty()),
 			style = textNoto12Sp(TextLightGrey)
 		)
 	} else {

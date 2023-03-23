@@ -16,6 +16,7 @@ import lib.dehaat.ledger.presentation.model.revamp.transactionsummary.ABSViewDat
 import lib.dehaat.ledger.presentation.model.revamp.transactionsummary.TransactionSummaryViewData
 import lib.dehaat.ledger.util.getRoundedAmountInRupees
 import lib.dehaat.ledger.util.toDoubleOrZero
+import lib.dehaat.ledger.util.getAmountInRupees
 
 class ViewDataMapper @Inject constructor() {
 
@@ -89,7 +90,11 @@ class ViewDataMapper @Inject constructor() {
     )
 
     private fun toABSViewData(abs: ABSEntity?) = abs?.run {
-        ABSViewData(amount, lastMoveScheme, showBanner)
+        ABSViewData(
+            amount,
+            lastMoveScheme,
+            showBanner,
+            lastMovedSchemeAmount?.let { it.getAmountInRupees() })
     }
 
     fun toOutstandingCalculationViewData(entity: TransactionSummaryEntity) = with(entity) {

@@ -1,7 +1,6 @@
 package lib.dehaat.ledger.framework.mapper
 
 import com.dehaat.androidbase.helper.orFalse
-import javax.inject.Inject
 import lib.dehaat.ledger.entities.abs.ABSTransactionEntity
 import lib.dehaat.ledger.entities.creditlines.CreditLineEntity
 import lib.dehaat.ledger.entities.creditsummary.CreditEntity
@@ -56,6 +55,7 @@ import lib.dehaat.ledger.framework.model.transactions.TransactionsData
 import lib.dehaat.ledger.framework.model.transactionsummary.ABSData
 import lib.dehaat.ledger.framework.model.transactionsummary.TransactionDetailData
 import lib.dehaat.ledger.presentation.ledger.ui.component.orZero
+import javax.inject.Inject
 
 typealias NetworkPaymentDetailSummary = lib.dehaat.ledger.framework.model.detail.payment.Summary
 typealias EntityPaymentDetailSummary = lib.dehaat.ledger.entities.detail.payment.SummaryEntity
@@ -129,7 +129,14 @@ class LedgerFrameworkMapper @Inject constructor() {
     }
 
     private fun toABSEntity(abs: ABSData?) =
-        abs?.run { ABSEntity(amount.orZero(), lastMoveScheme, showBanner.orFalse()) }
+        abs?.run {
+            ABSEntity(
+                amount.orZero(),
+                lastMoveScheme,
+                showBanner.orFalse(),
+                lastMovedSchemeAmount
+            )
+        }
 
     fun toCreditLineDataEntity(data: CreditLineData) = data.creditLines.map {
         toCreditLineEntity(it)
@@ -158,7 +165,8 @@ class LedgerFrameworkMapper @Inject constructor() {
             isInterestSubVented = it.isInterestSubVented,
             fromDate = it.fromDate,
             toDate = it.toDate,
-            adjustmentAmount = it.adjustmentAmount
+            adjustmentAmount = it.adjustmentAmount,
+            schemeName = it.schemeName
         )
     }
 
@@ -277,8 +285,8 @@ class LedgerFrameworkMapper @Inject constructor() {
             penaltyComponent = penaltyComponent,
             advanceComponent = advanceComponent,
             paidTo = paidTo,
-            belongsToGapl = belongsToGapl
-
+            belongsToGapl = belongsToGapl,
+            schemeName = schemeName
         )
     }
 
@@ -369,7 +377,8 @@ class LedgerFrameworkMapper @Inject constructor() {
             invoiceNumber = invoiceNumber,
             timestamp = timestamp,
             reason = reason,
-            invoiceDate = invoiceDate
+            invoiceDate = invoiceDate,
+            schemeName = schemeName
         )
     }
 
@@ -391,7 +400,8 @@ class LedgerFrameworkMapper @Inject constructor() {
             sourceNo = sourceNo,
             fromDate = fromDate,
             toDate = toDate,
-            adjustmentAmount = adjustmentAmount
+            adjustmentAmount = adjustmentAmount,
+            schemeName = schemeName
         )
     }
 

@@ -5,5 +5,5 @@ class CreditNoteSummaryViewData(
     val invoiceDate: Long?,
     val invoiceNumber: String?,
     val reason: String,
-    val timestamp: Long
+    val timestamp: Long,
 )

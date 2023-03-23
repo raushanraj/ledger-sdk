@@ -5,5 +5,6 @@ data class SummaryEntity(
     val invoiceNumber: String?,
     val invoiceDate: Long?,
     val timestamp: Long,
-    val reason: String
+    val reason: String,
+    val schemeName: String?,
 )

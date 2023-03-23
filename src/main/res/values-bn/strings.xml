@@ -17,7 +17,7 @@
     <string name="payment_will_be_processed_within_1_2_days">Payment will be processed within 1-2 days</string>
     <string name="under_process">Under Process</string>
     <string name="your_order_limit_is_exhausted_please_pay_minimum">Your order limit is exhausted. Please pay minimum Rs %s immediately</string>
-    <string name="adjust_remaining_balance">%s স্কিমের ব্যালেন্স বকেয়ার সাথে অ্যাডজাস্ট হয়ে গেছে।</string>
+    <string name="adjust_remaining_balance">%s বকেয়ার সাথে অ্যাডজাস্ট হয়ে গেছে।</string>
     <string name="see_details">বিবরণ দেখুন</string>
     <string name="advanced_payment_blocked_till_s">%s পর্যন্ত অগ্রীম টাকার পরিমাণ ব্লক করা আছে।</string>
     <string name="advanced_balance_details">অগ্রীম ব্যালেন্সের বিবরণ</string>

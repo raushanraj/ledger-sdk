@@ -11,5 +11,6 @@ data class PaymentDetailSummaryViewData(
     val penaltyComponent: String?,
     val advanceComponent: String?,
     val paidTo: String?,
-    val belongsToGapl: Boolean?
+    val belongsToGapl: Boolean?,
+    val schemeName: String?
 )

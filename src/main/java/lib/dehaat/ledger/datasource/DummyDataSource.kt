@@ -135,7 +135,9 @@ object DummyDataSource {
             sourceNo = null,
             fromDate = null,
             toDate = null,
-            adjustmentAmount = null
+            adjustmentAmount = null,
+            schemeName = null,
+            paymentModeWithScheme = "paymentMode"
         )
     }
 
@@ -156,7 +158,8 @@ object DummyDataSource {
         unrealizedPayment = false,
         fromDate = "45/Dec/2022",
         toDate = "46/Dec/2022",
-        adjustmentAmount = 400.00
+        adjustmentAmount = 400.00,
+        schemeName = null
     )
 
     val paymentDetailSummaryViewData = PaymentDetailSummaryViewData(
@@ -170,7 +173,8 @@ object DummyDataSource {
         penaltyComponent = null,
         advanceComponent = null,
         paidTo = null,
-        belongsToGapl = null
+        belongsToGapl = null,
+        schemeName = null
     )
 
     val outstandingCreditLimitViewState = OutstandingCreditLimitViewState(

@@ -26,5 +26,7 @@ data class Summary(
     @Json(name = "paid_to")
     val paidTo: String?,
     @Json(name = "belongs_to_gapl")
-    val belongsToGapl: Boolean?
+    val belongsToGapl: Boolean?,
+    @Json(name = "scheme_name")
+    val schemeName: String?
 )

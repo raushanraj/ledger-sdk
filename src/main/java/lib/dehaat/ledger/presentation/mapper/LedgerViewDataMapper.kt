@@ -5,7 +5,6 @@ import com.dehaat.androidbase.helper.isTrue
 import com.dehaat.androidbase.helper.orZero
 import com.dehaat.androidbase.utils.DateFormat.dd_MMM_yyy
 import com.dehaat.androidbase.utils.DateUtils
-import javax.inject.Inject
 import lib.dehaat.ledger.entities.abs.ABSTransactionEntity
 import lib.dehaat.ledger.entities.creditlines.CreditLineEntity
 import lib.dehaat.ledger.entities.creditsummary.CreditEntity
@@ -28,7 +27,6 @@ import lib.dehaat.ledger.entities.revamp.transaction.TransactionEntityV2
 import lib.dehaat.ledger.entities.transactions.TransactionEntity
 import lib.dehaat.ledger.entities.transactionsummary.ABSEntity
 import lib.dehaat.ledger.entities.transactionsummary.TransactionSummaryEntity
-import lib.dehaat.ledger.initializer.isGreaterThanOrEqualToCurrentDate
 import lib.dehaat.ledger.initializer.isSmallerThanOrEqualToCurrentDate
 import lib.dehaat.ledger.initializer.toDateMonthYear
 import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType
@@ -55,6 +53,7 @@ import lib.dehaat.ledger.presentation.model.revamp.transactionsummary.ABSViewDat
 import lib.dehaat.ledger.presentation.model.transactions.TransactionViewData
 import lib.dehaat.ledger.presentation.model.transactionsummary.TransactionSummaryViewData
 import lib.dehaat.ledger.util.getAmountInRupees
+import javax.inject.Inject
 
 typealias ViewDataPaymentDetailSummary = lib.dehaat.ledger.presentation.model.detail.payment.PaymentDetailSummaryViewData
 typealias EntityPaymentDetailSummary = lib.dehaat.ledger.entities.detail.payment.SummaryEntity
@@ -92,7 +91,11 @@ class LedgerViewDataMapper @Inject constructor() {
 	}
 
 	private fun toABSViewData(abs: ABSEntity?) = abs?.run {
-		ABSViewData(amount, lastMoveScheme, showBanner)
+		ABSViewData(
+			amount,
+			lastMoveScheme,
+			showBanner,
+			lastMovedSchemeAmount?.let { it.getAmountInRupees() })
 	}
 
 	fun toCreditLinesViewData(data: List<CreditLineEntity>) = data.map {
@@ -116,7 +119,7 @@ class LedgerViewDataMapper @Inject constructor() {
 		}
 		TransactionViewDataV2(
 			amount = it.amount,
-			creditNoteReason = it.creditNoteReason,
+			creditNoteReason = it.schemeName ?: it.creditNoteReason,
 			date = it.date,
 			erpId = it.erpId,
 			interestEndDate = it.interestEndDate,
@@ -131,7 +134,8 @@ class LedgerViewDataMapper @Inject constructor() {
 			unrealizedPayment = it.unrealizedPayment,
 			fromDate = it.fromDate?.toDateMonthYear(),
 			toDate = it.toDate?.toDateMonthYear(),
-			adjustmentAmount = it.adjustmentAmount
+			adjustmentAmount = it.adjustmentAmount,
+			schemeName = it.schemeName
 		)
 	}
 
@@ -154,7 +158,7 @@ class LedgerViewDataMapper @Inject constructor() {
 			amount = amount,
 			invoiceDate = invoiceDate,
 			invoiceNumber = invoiceNumber,
-			reason = reason,
+			reason = schemeName ?: reason,
 			timestamp = timestamp
 		)
 	}
@@ -218,7 +222,8 @@ class LedgerViewDataMapper @Inject constructor() {
 			penaltyComponent = penaltyComponent,
 			advanceComponent = advanceComponent,
 			paidTo = paidTo,
-			belongsToGapl = belongsToGapl
+			belongsToGapl = belongsToGapl,
+			schemeName = schemeName
 		)
 	}
 
@@ -363,7 +368,7 @@ class LedgerViewDataMapper @Inject constructor() {
 			amount = amount,
 			invoiceNumber = invoiceNumber,
 			timestamp = timestamp,
-			reason = reason
+			reason = schemeName ?: reason
 		)
 	}
 
@@ -375,7 +380,7 @@ class LedgerViewDataMapper @Inject constructor() {
 			amount = amount,
 			erpId = erpId,
 			locusId = locusId,
-			creditNoteReason = creditNoteReason,
+			creditNoteReason = schemeName ?: creditNoteReason,
 			paymentMode = paymentMode,
 			source = source,
 			unrealizedPayment = unrealizedPayment,
@@ -385,7 +390,9 @@ class LedgerViewDataMapper @Inject constructor() {
 			sourceNo = sourceNo,
 			fromDate = fromDate.toDateMonthYear(),
 			toDate = toDate.toDateMonthYear(),
-			adjustmentAmount = adjustmentAmount
+			adjustmentAmount = adjustmentAmount,
+			schemeName = schemeName,
+			paymentModeWithScheme = schemeName?.let { "$paymentMode; $it" } ?: paymentMode
 		)
 	}
 

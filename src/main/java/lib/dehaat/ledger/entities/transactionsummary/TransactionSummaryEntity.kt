@@ -19,5 +19,6 @@ data class TransactionSummaryEntity(
 data class ABSEntity(
 	val amount: Double,
 	val lastMoveScheme: String?,
-	val showBanner: Boolean
+	val showBanner: Boolean,
+	val lastMovedSchemeAmount: String?
 )

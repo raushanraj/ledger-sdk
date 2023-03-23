@@ -135,6 +135,8 @@ fun TransactionCard(
             ) {
                 val name = if (transactionType is TransactionType.CreditNote) {
                     stringResource(id = transactionType.name, transaction.creditNoteReason ?: "")
+                } else if (transactionType is TransactionType.Payment) {
+                    getPaymentTransactionLabel(transactionType, transaction)
                 } else {
                     stringResource(id = transactionType.name)
                 }
@@ -221,6 +223,20 @@ fun TransactionCard(
     VerticalSpacer(height = 16.dp)
     Divider()
 }
+
+@Composable
+private fun getPaymentTransactionLabel(
+    transactionType: TransactionType,
+    transaction: TransactionViewDataV2
+) = stringResource(
+    id = transactionType.name,
+    transaction.schemeName?.let {
+        stringResource(
+            id = R.string.colon_value,
+            it
+        )
+    }.orEmpty()
+)
 
 sealed class TransactionType(@StringRes val name: Int, val type: String) {
     data class Invoice(

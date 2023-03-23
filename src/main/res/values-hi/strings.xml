@@ -84,7 +84,7 @@
     <string name="your_advance_amount">%s आपका एडवांस राशि है</string>
     <string name="credit_note_ledger">क्रेडिट नोट: %s</string>
     <string name="ledger_credit_note">क्रेडिट नोट</string>
-    <string name="ledger_payment">भुगतान प्राप्त हुआ। धन्यवाद</string>
+    <string name="ledger_payment">भुगतान प्राप्त हुआ%s। धन्यवाद</string>
     <string name="till_today">%s से आज तक</string>
     <string name="interest_running">%s दिन से ब्याज चल रहा है</string>
     <string name="interest_starting">%s दिन में ब्याज शुरू होगा</string>
@@ -131,7 +131,7 @@
     <string name="unpaid_outstanding">चूंकि आपने ₹ %s</string>
     <string name="more_than_90_days">का बकाया 90 से अधिक दिनों से भुगतान नहीं किया है</string>
     <string name="advance_balance_booking">एडवांस भुगतान : एडवांस बुकिंग स्कीम</string>
-    <string name="adjust_remaining_balance">%s स्कीम का बैलेन्स बकाया में ऐडजस्ट हो गया है।</string>
+    <string name="adjust_remaining_balance">%s बकाया में ऐडजस्ट हो गया है।</string>
     <string name="see_details">विवरण देखें</string>
     <string name="advanced_payment_blocked_till_s">%s तक एडवाँस राशी ब्लॉक्ड है।</string>
     <string name="advanced_balance_details">एडवांस बैलेन्स विवरण</string>
@@ -177,4 +177,5 @@
     <string name="ledger_credit_line_status_repayment_frequency">आपकी क्रेडिट लाइन होल्ड पर है क्योंकि आपने %s रुपये की राशि का भुगतान %s दिनों से नहीं किया है। कृपया तुरंत भुगतान करें</string>
     <string name="ledger_credit_line_status_onboarding_pod">आपकी क्रेडिट लाइन होल्ड पर है क्योंकि आपने अपने दस्तावेज़ जमा नहीं किए हैं। अधिक जानकारी के लिए कृपया अपने बिक्री कार्यकारी से संपर्क करें</string>
     <string name="your_ordering_is_blocked">आपकी ऑर्डरिंग बंद है</string>
+    <string name="colon_value">: %s</string>
 </resources>
