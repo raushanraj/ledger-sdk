@@ -129,7 +129,7 @@
     <string name="your_order_limit_is_exhausted_please_pay_minimum">आपकी ऑर्डर लिमिट पूरी हो गई है। कृपया न्यूनतम रु. %s तुरंत भुगतान करें।</string>
     <string name="some_features_locked">कुछ ऐप सुविधाएं लॉक हैं</string>
     <string name="unpaid_outstanding">चूंकि आपने ₹ %s</string>
-    <string name="more_than_90_days">का बकाया 90 से अधिक दिनों से भुगतान नहीं किया है</string>
+    <string name="more_than_90_days">का बकाया %s से अधिक दिनों से भुगतान नहीं किया है</string>
     <string name="advance_balance_booking">एडवांस भुगतान : एडवांस बुकिंग स्कीम</string>
     <string name="adjust_remaining_balance">%s स्कीम का बैलेन्स बकाया में ऐडजस्ट हो गया है।</string>
     <string name="see_details">विवरण देखें</string>

@@ -44,7 +44,8 @@ private fun LedgerHeaderScreenPreview() {
         summaryViewData = DummyDataSource.summaryViewData,
         onPayNowClick = {},
         onTotalOutstandingDetailsClick = {},
-        onShowInvoiceListDetailsClick = {}
+        onShowInvoiceListDetailsClick = {},
+        onOtherPaymentModeClick = {}
     ) {}
 }
 
@@ -58,7 +59,8 @@ private fun LedgerHeaderScreenAIMSPreview() {
         summaryViewData = DummyDataSource.summaryViewData,
         onPayNowClick = {},
         onTotalOutstandingDetailsClick = {},
-        onShowInvoiceListDetailsClick = {}
+        onShowInvoiceListDetailsClick = {},
+        onOtherPaymentModeClick = {}
     ) {}
 }
 
@@ -68,7 +70,8 @@ fun LedgerHeaderScreen(
     onPayNowClick: () -> Unit,
     onTotalOutstandingDetailsClick: () -> Unit,
     onShowInvoiceListDetailsClick: () -> Unit,
-    onOtherPaymentModeClick: () -> Unit
+    onOtherPaymentModeClick: () -> Unit,
+    outstandingPaymentValid: () -> Unit
 ) = Column(
     modifier = Modifier
         .background(Color.White)
@@ -78,7 +81,8 @@ fun LedgerHeaderScreen(
         OutstandingData(false)
     )
     if (outstanding.showDialog) {
-        OutStandingPaymentView(outstanding.amount)
+        outstandingPaymentValid()
+        OutStandingPaymentView(outstanding)
     }
     summaryViewData?.let {
         if (it.totalAvailableCreditLimit.toDoubleOrZero() < 0.0)

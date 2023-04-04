@@ -138,7 +138,7 @@
     <string name="your_order_limit_is_exhausted_please_pay_minimum">Your order limit is exhausted. Please pay minimum Rs %s immediately</string>
     <string name="some_features_locked">Some app features are locked</string>
     <string name="unpaid_outstanding">As you have an unpaid outstanding of  ₹ %s</string>
-    <string name="more_than_90_days">for more than 90 days.</string>
+    <string name="more_than_90_days">for more than %s days.</string>
     <string name="advance_balance_booking">Advance Payment : Advance Booking Scheme</string>
     <string name="adjust_remaining_balance">%s’s balance has been adjusted with outstanding</string>
     <string name="see_details">See details</string>

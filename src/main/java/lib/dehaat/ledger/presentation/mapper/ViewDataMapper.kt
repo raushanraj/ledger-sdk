@@ -21,6 +21,11 @@ class ViewDataMapper @Inject constructor() {
 
     fun toCreditSummaryViewData(entity: CreditSummaryEntityV2) = with(entity) {
         val isOrderingBlocked = minimumRepaymentAmount.toDoubleOrZero() > 0 && overdueAmount.toDoubleOrZero() > overdueCreditLimit.toDoubleOrZero()
+        val isCreditLineOnHold = when {
+            isOrderingBlocked -> true
+            creditLineStatus == LedgerConstants.ON_HOLD -> false
+            else -> minimumRepaymentAmount.toDoubleOrZero() <= 0 || repaymentDate == null
+        }
         SummaryViewData(
             bufferLimit = bufferLimit,
             creditNoteAmountTillDate = creditNoteAmountTillDate,
@@ -43,17 +48,13 @@ class ViewDataMapper @Inject constructor() {
             hideMinimumRepaymentSection = minimumRepaymentAmount.toDoubleOrZero() <= 0 || repaymentDate == null,
             isOrderingBlocked = isOrderingBlocked,
             repaymentDate = repaymentDate.toDateMonthName(),
-            showToolTipInformation = overdueAmount.toDoubleOrZero() > 0,
+            showToolTipInformation = overdueAmount.toDoubleOrZero() > 0 && isCreditLineOnHold && minimumRepaymentAmount.toDoubleOrZero() > 0,
             creditLineStatus = if (isOrderingBlocked) null else creditLineStatus,
             creditLineSubStatus = creditLineSubStatus,
             agedOutstandingAmount = formatDecimal(agedOutstandingAmount, 0),
             repaymentUnblockAmount = formatDecimal(repaymentUnblockAmount, 0),
             repaymentUnblockDays = repaymentUnblockDays.orZero(),
-            isCreditLineOnHold = when {
-                isOrderingBlocked -> true
-                creditLineStatus == LedgerConstants.ON_HOLD -> false
-                else -> minimumRepaymentAmount.toDoubleOrZero() <= 0 || repaymentDate == null
-            }
+            isCreditLineOnHold = isCreditLineOnHold
         )
     }
 

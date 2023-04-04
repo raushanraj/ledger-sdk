@@ -16,22 +16,25 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import lib.dehaat.ledger.resources.Error90
-import java.math.BigDecimal
 import lib.dehaat.ledger.R
+import lib.dehaat.ledger.framework.model.outstanding.OutstandingData
 import lib.dehaat.ledger.resources.Neutral10
 import lib.dehaat.ledger.resources.text12Sp
 import lib.dehaat.ledger.resources.textSemiBold14Sp
 import lib.dehaat.ledger.util.formatAmount
 
 @Composable
-fun OutStandingPaymentView(amount: BigDecimal?) {
+fun OutStandingPaymentView(outstandingData: OutstandingData) {
     Row(
         Modifier
             .fillMaxWidth()
             .aspectRatio(4.86f)
             .background(Error90)
     ) {
-        OutStandingText(amount?.toString().orEmpty(), Modifier.weight(1f))
+        OutStandingText(
+            outstandingData,
+            Modifier.weight(1f)
+        )
         Image(
             painter = painterResource(id = R.drawable.lock_payment_view),
             modifier = Modifier.fillMaxHeight(),
@@ -42,18 +45,19 @@ fun OutStandingPaymentView(amount: BigDecimal?) {
 }
 
 @Composable
-private fun OutStandingText(amount: String, modifier: Modifier) = Column(
+private fun OutStandingText(outstandingData: OutstandingData, modifier: Modifier) = Column(
     modifier.padding(horizontal = 16.dp, vertical = 12.dp)
 ) {
     Text(
         text = stringResource(R.string.some_features_locked),
         style = textSemiBold14Sp(Neutral10)
     )
-    UnpaidOutStandingText(amount)
+    UnpaidOutStandingText(outstandingData)
 }
 
 @Composable
-fun UnpaidOutStandingText(amount: String) {
+fun UnpaidOutStandingText(outstandingData: OutstandingData) {
+    val amount = outstandingData.amount?.toString().orEmpty()
     val formattedAmount = remember(amount) { amount.formatAmount() }
     val outStandingText = stringResource(R.string.unpaid_outstanding, formattedAmount)
     Text(
@@ -65,7 +69,7 @@ fun UnpaidOutStandingText(amount: String) {
                 end = outStandingText.length
             )
             append(" ")
-            append(stringResource(R.string.more_than_90_days))
+            append(stringResource(R.string.more_than_90_days, outstandingData.numberOfDays ?: "90"))
         },
         modifier = Modifier.padding(top = 2.dp),
         style = text12Sp(Neutral10)

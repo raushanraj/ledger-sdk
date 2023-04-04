@@ -172,4 +172,12 @@ class RevampLedgerViewModel @Inject constructor(
         ledgerDownloadUseCase(partnerId)
         updateProgressDialog(false)
     }
+
+    fun outstandingPaymentValid() = viewModelState.update {
+        val summaryViewData = it.summaryViewData?.copy(
+            isOrderingBlocked = false,
+            creditLineStatus = null
+        )
+        it.copy(summaryViewData = summaryViewData)
+    }
 }

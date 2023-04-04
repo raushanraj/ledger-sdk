@@ -74,8 +74,12 @@ object LedgerSDK {
         null
     }
 
-    suspend fun updateOutStanding(showDialog: Boolean, amount: BigDecimal?) {
-        outstandingDataFlow.emit(OutstandingData(showDialog, amount))
+    suspend fun updateOutStanding(
+        showDialog: Boolean,
+        amount: BigDecimal?,
+        numberOfDays: Int?
+    ) {
+        outstandingDataFlow.emit(OutstandingData(showDialog, amount, numberOfDays?.toString() ?: "90"))
     }
 
     val isDBA: Boolean

@@ -192,7 +192,8 @@ fun RevampLedgerScreen(
 											)
 										)
 									},
-									onOtherPaymentModeClick = onOtherPaymentModeClick
+									onOtherPaymentModeClick = onOtherPaymentModeClick,
+									outstandingPaymentValid = viewModel::outstandingPaymentValid
 								)
 							}
 						},

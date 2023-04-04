@@ -83,7 +83,7 @@ fun CreditSummaryView(
     ) {
         val outstanding by LedgerSDK.outstandingDataFlow.collectAsState()
         if (outstanding.showDialog) {
-            OutStandingPaymentView(outstanding.amount)
+            OutStandingPaymentView(outstanding)
         } else if (creditSummaryData?.isOrderingBlocked == true) {
             Text(
                 modifier = Modifier
