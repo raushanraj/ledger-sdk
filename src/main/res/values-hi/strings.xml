@@ -84,7 +84,7 @@
     <string name="your_advance_amount">%s आपका एडवांस राशि है</string>
     <string name="credit_note_ledger">क्रेडिट नोट: %s</string>
     <string name="ledger_credit_note">क्रेडिट नोट</string>
-    <string name="ledger_payment">भुगतान</string>
+    <string name="ledger_payment">भुगतान प्राप्त हुआ। धन्यवाद</string>
     <string name="till_today">%s से आज तक</string>
     <string name="interest_running">%s दिन से ब्याज चल रहा है</string>
     <string name="interest_starting">%s दिन में ब्याज शुरू होगा</string>

@@ -104,7 +104,7 @@
     <string name="your_advance_amount">%s is your advance amount</string>
     <string name="credit_note_ledger">Credit Note: %s</string>
     <string name="ledger_credit_note">Credit Note</string>
-    <string name="ledger_payment">Payment</string>
+    <string name="ledger_payment">Payment Received. Thank You</string>
     <string name="till_today">%s till today</string>
     <string name="interest_running">Interest already charged from %s days</string>
     <string name="interest_starting">Interest going to be started in %s days</string>

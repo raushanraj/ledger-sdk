@@ -29,6 +29,7 @@ import lib.dehaat.ledger.initializer.toDateMonthYear
 import lib.dehaat.ledger.presentation.ledger.transactions.constants.TransactionType
 import lib.dehaat.ledger.presentation.model.transactions.TransactionViewData
 import lib.dehaat.ledger.resources.Pumpkin120
+import lib.dehaat.ledger.resources.SeaGreen110
 import lib.dehaat.ledger.resources.textBold14Sp
 import lib.dehaat.ledger.resources.textMedium14Sp
 import lib.dehaat.ledger.util.getAmountInRupees
@@ -90,9 +91,13 @@ fun TransactionInvoiceItem(
                 }
                 Text(
                     text = transactionType,
-                    style = textMedium14Sp(textColor = ledgerColors.CtaDarkColor),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    style = textMedium14Sp(
+                        textColor = if (data.type == TransactionType.PAYMENT) {
+                            SeaGreen110
+                        } else {
+                            ledgerColors.CtaDarkColor
+                        }
+                    )
                 )
             }
 
