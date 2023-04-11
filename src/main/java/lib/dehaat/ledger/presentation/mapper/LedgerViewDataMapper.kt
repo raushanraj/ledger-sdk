@@ -28,7 +28,6 @@ import lib.dehaat.ledger.entities.revamp.transaction.TransactionEntityV2
 import lib.dehaat.ledger.entities.transactions.TransactionEntity
 import lib.dehaat.ledger.entities.transactionsummary.ABSEntity
 import lib.dehaat.ledger.entities.transactionsummary.TransactionSummaryEntity
-import lib.dehaat.ledger.initializer.isGreaterThanOrEqualToCurrentDate
 import lib.dehaat.ledger.initializer.isSmallerThanOrEqualToCurrentDate
 import lib.dehaat.ledger.initializer.toDateMonthYear
 import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType
@@ -105,7 +104,7 @@ class LedgerViewDataMapper @Inject constructor() {
 
 	fun toTransactionEntity(data: List<TransactionEntityV2>) = data.map {
 		val interestStartDate = when (it.type) {
-			TransactionType.Invoice().type -> it.interestStartDate
+			TransactionType.Invoice().type -> if (it.isInterestSubVented.isTrue()) it.interestStartDate else null
 			TransactionType.CreditNote().type -> it.interestStartDate
 			TransactionType.Payment().type -> it.interestStartDate
 			TransactionType.Interest().type -> null
