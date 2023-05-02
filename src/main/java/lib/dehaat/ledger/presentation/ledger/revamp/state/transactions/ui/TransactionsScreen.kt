@@ -2,6 +2,7 @@ package lib.dehaat.ledger.presentation.ledger.revamp.state.transactions.ui
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -92,55 +93,59 @@ fun TransactionsScreen(
                 when (transaction.type) {
                     TransactionType.Invoice().invoiceType -> TransactionCard(
                         transactionType = TransactionType.Invoice(),
-                        transaction = transaction
-                    ) {
-                        transaction.erpId?.let { erpId ->
-                            detailPageNavigationCallback.navigateToRevampInvoiceDetailPage(
-                                RevampInvoiceDetailViewModel.getBundle(
-                                    ledgerId = transaction.ledgerId,
-                                    source = transaction.source,
-                                    erpId = erpId
+                        transaction = transaction,
+                        modifier = Modifier.clickable {
+                            transaction.erpId?.let { erpId ->
+                                detailPageNavigationCallback.navigateToRevampInvoiceDetailPage(
+                                    RevampInvoiceDetailViewModel.getBundle(
+                                        ledgerId = transaction.ledgerId,
+                                        source = transaction.source,
+                                        erpId = erpId
+                                    )
+                                )
+                            }
+                        }
+                    )
+
+                    TransactionType.CreditNote().creditNoteType -> TransactionCard(
+                        transactionType = TransactionType.CreditNote(),
+                        transaction = transaction,
+                        modifier = Modifier.clickable {
+                            detailPageNavigationCallback.navigateToRevampCreditNoteDetailPage(
+                                CreditNoteDetailsViewModel.getBundle(transaction.ledgerId)
+                            )
+                        }
+                    )
+                    TransactionType.Payment().paymentType -> TransactionCard(
+                        transactionType = TransactionType.Payment(),
+                        transaction = transaction,
+                        modifier = Modifier.clickable {
+                            detailPageNavigationCallback.navigateToRevampPaymentDetailPage(
+                                PaymentDetailViewModel.getBundle(
+                                    transaction.ledgerId,
+                                    transaction.unrealizedPayment
                                 )
                             )
                         }
-                    }
-                    TransactionType.CreditNote().creditNoteType -> TransactionCard(
-                        transactionType = TransactionType.CreditNote(),
-                        transaction = transaction
-                    ) {
-                        detailPageNavigationCallback.navigateToRevampCreditNoteDetailPage(
-                            CreditNoteDetailsViewModel.getBundle(transaction.ledgerId)
-                        )
-                    }
-                    TransactionType.Payment().paymentType -> TransactionCard(
-                        transactionType = TransactionType.Payment(),
-                        transaction = transaction
-                    ) {
-                        detailPageNavigationCallback.navigateToRevampPaymentDetailPage(
-                            PaymentDetailViewModel.getBundle(
-                                transaction.ledgerId,
-                                transaction.unrealizedPayment
-                            )
-                        )
-                    }
+                    )
                     TransactionType.Interest().interestType -> {
                         TransactionCard(
                             transactionType = TransactionType.Interest(),
                             transaction = transaction
-                        ) {}
+                        )
                     }
                     TransactionType.FinancingFee().financingFeeType -> TransactionCard(
                         transactionType = TransactionType.FinancingFee(),
                         transaction = transaction
-                    ) {}
+                    )
                     TransactionType.DebitNote().type -> TransactionCard(
                         transactionType = TransactionType.DebitNote(),
                         transaction = transaction
-                    ) {}
+                    )
                     TransactionType.DebitEntry().type -> TransactionCard(
                         transactionType = TransactionType.DebitEntry(),
                         transaction = transaction
-                    ) {}
+                    )
                 }
             }
         }

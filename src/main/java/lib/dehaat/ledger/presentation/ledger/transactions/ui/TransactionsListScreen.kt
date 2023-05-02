@@ -105,19 +105,19 @@ fun TransactionsListScreen(
 						TransactionType.INTEREST -> TransactionCard(
 							transactionType = Interest(),
 							transaction = it.toTransactionViewDataV2()
-						) {}
+						)
 						TransactionType.FINANCING_FEE -> TransactionCard(
 							transactionType = FinancingFee(),
 							transaction = it.toTransactionViewDataV2()
-						) {}
+						)
 						TransactionType.DEBIT_NOTE -> TransactionCard(
 							transactionType = DebitNote(),
 							transaction = it.toTransactionViewDataV2()
-						) {}
+						)
 						TransactionType.DEBIT_ENTRY -> TransactionCard(
 							transactionType = DebitEntry(),
 							transaction = it.toTransactionViewDataV2()
-						) {}
+						)
 						else -> TransactionInvoiceItem(
 							data = it,
 							ledgerColors = ledgerColors

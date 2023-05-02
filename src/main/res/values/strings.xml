@@ -80,8 +80,8 @@
     <string name="interest_amount_ledger">Interest</string>
     <string name="daily_interest_details">Daily Interest Details</string>
     <string name="financing_fee">Invoice: Financing Fee</string>
-    <string name="debit_note">Debit Note</string>
-    <string name="debit_entry">Payment Refund</string>
+    <string name="debit_note">Debit Note: %s</string>
+    <string name="debit_entry">Payment Refund: %s</string>
     <string name="invoice_list">Invoice List</string>
     <string name="invoice_on_which_interest_is_charged">Invoices on which Interest is charged</string>
     <string name="invoice_on_which_interest_going_to_charged">Invoices on which interest is going to be charged</string>

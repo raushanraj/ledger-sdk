@@ -4,7 +4,6 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -50,7 +49,7 @@ private fun TransactionCardInvoicePreview() = LedgerTheme {
     TransactionCard(
         transactionType = TransactionType.Invoice(),
         transaction = DummyDataSource.invoiceTransaction
-    ) {}
+    )
 }
 
 @Preview(
@@ -62,7 +61,7 @@ private fun TransactionCardCreditNotePreview() = LedgerTheme {
     TransactionCard(
         transactionType = TransactionType.CreditNote(),
         transaction = DummyDataSource.invoiceTransaction
-    ) {}
+    )
 }
 
 @Preview(
@@ -74,7 +73,7 @@ private fun TransactionCardPaymentPreview() = LedgerTheme {
     TransactionCard(
         transactionType = TransactionType.Payment(),
         transaction = DummyDataSource.invoiceTransaction
-    ) {}
+    )
 }
 
 @Preview(
@@ -86,7 +85,7 @@ private fun TransactionCardInterestPreview() = LedgerTheme {
     TransactionCard(
         transactionType = TransactionType.Interest(),
         transaction = DummyDataSource.invoiceTransaction
-    ) {}
+    )
 }
 
 @Preview(
@@ -98,17 +97,16 @@ private fun TransactionCardFinancingFeePreview() = LedgerTheme {
     TransactionCard(
         transactionType = TransactionType.FinancingFee(),
         transaction = DummyDataSource.invoiceTransaction
-    ) {}
+    )
 }
 
 @Composable
 fun TransactionCard(
     transactionType: TransactionType,
     transaction: TransactionViewDataV2,
-    onClick: () -> Unit
+    modifier: Modifier = Modifier
 ) = Column(
-    modifier = Modifier
-        .clickable(onClick = onClick)
+    modifier = modifier
         .background(Color.White)
         .fillMaxWidth()
         .padding(horizontal = 20.dp)
@@ -133,12 +131,21 @@ fun TransactionCard(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                val name = if (transactionType is TransactionType.CreditNote) {
-                    stringResource(id = transactionType.name, transaction.creditNoteReason ?: "")
-                } else if (transactionType is TransactionType.Payment) {
-                    getPaymentTransactionLabel(transactionType, transaction)
-                } else {
-                    stringResource(id = transactionType.name)
+                val name = when (transactionType) {
+                    is TransactionType.CreditNote, is TransactionType.DebitNote, is TransactionType.DebitEntry -> {
+                        stringResource(
+                            id = transactionType.name,
+                            transaction.creditNoteReason.orEmpty()
+                        )
+                    }
+
+                    is TransactionType.Payment -> {
+                        getPaymentTransactionLabel(transactionType, transaction)
+                    }
+
+                    else -> {
+                        stringResource(id = transactionType.name)
+                    }
                 }
                 Text(
                     text = name,
