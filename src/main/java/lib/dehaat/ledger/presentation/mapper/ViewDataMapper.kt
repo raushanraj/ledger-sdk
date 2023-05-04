@@ -54,7 +54,6 @@ class ViewDataMapper @Inject constructor() {
             creditLineSubStatus = creditLineSubStatus,
             agedOutstandingAmount = formatDecimal(agedOutstandingAmount, 0),
             repaymentUnblockAmount = formatDecimal(repaymentUnblockAmount, 0),
-            repaymentUnblockDays = repaymentUnblockDays.orZero(),
             isCreditLineOnHold = isCreditLineOnHold
         )
     }

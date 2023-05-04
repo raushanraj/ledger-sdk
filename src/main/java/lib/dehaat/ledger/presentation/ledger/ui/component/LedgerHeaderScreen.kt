@@ -99,7 +99,6 @@ fun LedgerHeaderScreen(
             OverduePaymentView(
                 it.creditLineSubStatus,
                 it.agedOutstandingAmount,
-                it.repaymentUnblockDays,
                 it.repaymentUnblockAmount
             )
         }

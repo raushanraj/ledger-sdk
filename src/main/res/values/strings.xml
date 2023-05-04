@@ -183,7 +183,7 @@
     <string name="ledger_download">Download Ledger</string>
     <string name="ledger_credit_line_status_miscellaneous">Your credit line is on-hold.</string>
     <string name="ledger_credit_line_status_aged_outstanding">Your credit line is on-hold as you haven’t cleared your overdue outstanding of Rs. %s. Please pay immediately.</string>>
-    <string name="ledger_credit_line_status_repayment_frequency">Your credit line is on-hold as Rs. %s is pending since %s days. Please pay immediately.</string>
+    <string name="ledger_credit_line_status_repayment_frequency">Your credit line is on-hold as payment of Rs. %s is pending. Please pay immediately</string>
     <string name="ledger_credit_line_status_onboarding_pod">Your credit line is on-hold as you haven’t submitted your onboarding documents. Please contact you sales executive for further details.</string>
     <string name="your_ordering_is_blocked">Your ordering is blocked</string>
     <string name="colon_value">: %s</string>

@@ -27,6 +27,5 @@ data class SummaryViewData(
     val creditLineSubStatus: String,
     val agedOutstandingAmount: String,
     val repaymentUnblockAmount: String,
-    val repaymentUnblockDays: Long,
     val isCreditLineOnHold: Boolean
 )

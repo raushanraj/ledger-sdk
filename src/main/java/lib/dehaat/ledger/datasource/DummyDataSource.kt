@@ -73,7 +73,6 @@ object DummyDataSource {
         creditLineStatus = "",
         creditLineSubStatus = "",
         agedOutstandingAmount = "0.0",
-        repaymentUnblockDays = 0,
         repaymentUnblockAmount = "0.0",
         isCreditLineOnHold = true
     )
