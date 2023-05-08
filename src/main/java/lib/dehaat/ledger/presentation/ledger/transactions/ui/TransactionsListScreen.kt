@@ -1,5 +1,10 @@
 package lib.dehaat.ledger.presentation.ledger.transactions.ui
 
+import android.Manifest
+import android.os.Build
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -43,7 +48,10 @@ import lib.dehaat.ledger.presentation.ledger.transactions.ui.component.AbsBanner
 import lib.dehaat.ledger.presentation.ledger.transactions.ui.component.TransactionInvoiceItem
 import lib.dehaat.ledger.presentation.ledger.ui.component.FilterStrip
 import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionCard
-import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType.*
+import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType.DebitEntry
+import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType.DebitNote
+import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType.FinancingFee
+import lib.dehaat.ledger.presentation.ledger.ui.component.TransactionType.Interest
 import lib.dehaat.ledger.presentation.model.revamp.transactions.TransactionViewDataV2
 import lib.dehaat.ledger.presentation.model.transactions.TransactionViewData
 import lib.dehaat.ledger.presentation.model.transactions.toStartAndEndDates
@@ -68,6 +76,21 @@ fun TransactionsListScreen(
 	val lifecycleOwner = LocalLifecycleOwner.current
 	val context = LocalContext.current
 
+	val launcher = rememberLauncherForActivityResult(
+		contract = ActivityResultContracts.RequestPermission(),
+		onResult = { granted ->
+			if (granted) {
+				viewModel.downloadLedger()
+			} else {
+				Toast.makeText(
+					context,
+					context.getString(R.string.external_storage_permission_required),
+					Toast.LENGTH_LONG
+				).show()
+			}
+		}
+	)
+
 	Column {
 		if (abs?.showBanner.isTrue()) {
 			AbsBanner(abs, viewModel.ledgerAnalytics) {
@@ -80,7 +103,14 @@ fun TransactionsListScreen(
 			ledgerColors = ledgerColors,
 			onDaysToFilterIconClick = openDaysFilter,
 			onDateRangeFilterIconClick = openRangeFilter,
-			onLedgerDownloadClick = viewModel::downloadLedger
+			onLedgerDownloadClick = {
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+					viewModel.downloadLedger()
+				} else {
+					launcher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+				}
+
+			}
 		)
 
 		filterState?.toStartAndEndDates()?.let {

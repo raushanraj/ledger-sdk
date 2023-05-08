@@ -187,4 +187,5 @@
     <string name="ledger_credit_line_status_onboarding_pod">Your credit line is on-hold as you haven’t submitted your onboarding documents. Please contact you sales executive for further details.</string>
     <string name="your_ordering_is_blocked">Your ordering is blocked</string>
     <string name="colon_value">: %s</string>
+    <string name="external_storage_permission_required">Storage Permission Required</string>
 </resources>

@@ -1,5 +1,10 @@
 package lib.dehaat.ledger.presentation.ledger.revamp.state.transactions.ui
 
+import android.Manifest
+import android.os.Build
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -57,12 +62,32 @@ fun TransactionsScreen(
     val lifecycleOwner = LocalLifecycleOwner.current
     val context = LocalContext.current
     val uiState by viewModel.uiState.collectAsState()
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission(),
+        onResult = { granted ->
+            if (granted) {
+                ledgerViewModel.downloadLedger()
+            } else {
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.external_storage_permission_required),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    )
     LazyColumn(modifier = Modifier.fillMaxWidth()) {
         stickyHeader {
             TransactionListHeader(
                 ledgerViewModel = ledgerViewModel,
                 onFilterClick = showFilterSheet,
-                onLedgerDownloadClick = ledgerViewModel::downloadLedger
+                onLedgerDownloadClick = {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        ledgerViewModel.downloadLedger()
+                    } else {
+                        launcher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    }
+                }
             ) { detailPageNavigationCallback.navigateToABSDetailPage(it) }
         }
         item {

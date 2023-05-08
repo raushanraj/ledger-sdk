@@ -178,4 +178,5 @@
     <string name="ledger_credit_line_status_onboarding_pod">आपकी क्रेडिट लाइन होल्ड पर है क्योंकि आपने अपने दस्तावेज़ जमा नहीं किए हैं। अधिक जानकारी के लिए कृपया अपने बिक्री कार्यकारी से संपर्क करें</string>
     <string name="your_ordering_is_blocked">आपकी ऑर्डरिंग बंद है</string>
     <string name="colon_value">: %s</string>
+    <string name="external_storage_permission_required">स्टोरेज अनुमति आवश्यक है</string>
 </resources>

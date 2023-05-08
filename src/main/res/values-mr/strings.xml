@@ -18,4 +18,5 @@
     <string name="under_process">Under Process</string>
     <string name="your_order_limit_is_exhausted_please_pay_minimum">Your order limit is exhausted. Please pay minimum Rs %s immediately</string>
     <string name="amount_is_blocked">योजनेसाठी ऑर्डर उघडेपर्यंत आगाऊ रक्कम अवरोधित केली जाते</string>
+    <string name="external_storage_permission_required">स्टोरेज परवानगी आवश्यक आहे</string>
 </resources>
